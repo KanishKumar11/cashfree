@@ -27,7 +27,9 @@ export default function CheckoutPage() {
   }, [orderData, setOrder]);
 
   if (!orderId) {
-    return <ErrorState message="No order ID provided. Please go back and try again." />;
+    return (
+      <ErrorState message="No order ID provided. Please go back and try again." />
+    );
   }
 
   if (isLoading) {
@@ -45,7 +47,9 @@ export default function CheckoutPage() {
   }
 
   if (orderData.order_status === "EXPIRED") {
-    return <ErrorState message="This order has expired. Please create a new order." />;
+    return (
+      <ErrorState message="This order has expired. Please create a new order." />
+    );
   }
 
   return <PaymentContainer />;

@@ -146,7 +146,10 @@ export interface CashfreePaymentResult {
 export interface CashfreeInstance {
   checkout(options: CheckoutOptions): Promise<CashfreePaymentResult>;
   pay(options: PayOptions): Promise<CashfreePaymentResult>;
-  create(elementType: CashfreeElementType, options?: CreateElementOptions): CashfreeElement;
+  create(
+    elementType: CashfreeElementType,
+    options?: CreateElementOptions,
+  ): CashfreeElement;
 }
 
 // Module augmentation is in src/types/cashfree-js.d.ts

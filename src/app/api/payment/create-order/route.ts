@@ -10,7 +10,8 @@ function getAppUrl(request: NextRequest): string {
   if (configuredUrl) return configuredUrl;
 
   const forwardedProto =
-    request.headers.get("x-forwarded-proto") || request.headers.get("x-forwarded-protocol");
+    request.headers.get("x-forwarded-proto") ||
+    request.headers.get("x-forwarded-protocol");
   const host =
     request.headers.get("x-forwarded-host") || request.headers.get("host");
 
@@ -37,9 +38,7 @@ const createOrderSchema = z.object({
   customer_id: z.string().min(1),
   customer_name: z.string().min(1),
   customer_email: z.string().email(),
-  customer_phone: z
-    .string()
-    .regex(/^\d{10}$/),
+  customer_phone: z.string().regex(/^\d{10}$/),
   return_url: z.string().url().optional(),
   order_tags: z.record(z.string(), z.string()).optional(),
 });
@@ -76,7 +75,12 @@ export async function POST(
     const order_id = generateOrderId();
     const appUrl = getAppUrl(request);
 
-    logger.info("Creating order", { order_id, order_amount, customer_id, appUrl });
+    logger.info("Creating order", {
+      order_id,
+      order_amount,
+      customer_id,
+      appUrl,
+    });
 
     const orderData = await createCashfreeOrder({
       order_id,

@@ -125,12 +125,20 @@ export interface WebhookPayload {
     customer_details: CustomerDetails;
   };
   event_time: string;
-  type: "PAYMENT_SUCCESS_WEBHOOK" | "PAYMENT_FAILED_WEBHOOK" | "PAYMENT_USER_DROPPED_WEBHOOK";
+  type:
+    | "PAYMENT_SUCCESS_WEBHOOK"
+    | "PAYMENT_FAILED_WEBHOOK"
+    | "PAYMENT_USER_DROPPED_WEBHOOK";
 }
 
 // ─── UI State ─────────────────────────────────────────────────────────────────
 
-export type ActivePaymentMethod = "upi" | "card" | "netbanking" | "wallet" | "saved";
+export type ActivePaymentMethod =
+  | "upi"
+  | "card"
+  | "netbanking"
+  | "wallet"
+  | "saved";
 
 export interface UPIApp {
   id: string;

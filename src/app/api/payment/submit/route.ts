@@ -8,9 +8,7 @@ import { serverConfig } from "@/lib/config/server-config";
 const submitSchema = z.object({
   payment_session_id: z.string().min(1),
   instrument_id: z.string().min(1),
-  card_cvv: z
-    .string()
-    .regex(/^\d{3,4}$/, "CVV must be 3 or 4 digits"),
+  card_cvv: z.string().regex(/^\d{3,4}$/, "CVV must be 3 or 4 digits"),
 });
 
 // ─── POST /api/payment/submit ─────────────────────────────────────────────────
@@ -32,7 +30,10 @@ export async function POST(req: NextRequest) {
   const parsed = submitSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { success: false, error: parsed.error.issues[0]?.message ?? "Invalid input." },
+      {
+        success: false,
+        error: parsed.error.issues[0]?.message ?? "Invalid input.",
+      },
       { status: 422 },
     );
   }

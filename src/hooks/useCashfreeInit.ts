@@ -21,9 +21,7 @@ export function useCashfreeInit() {
 
     // Dynamic import avoids issues with the module's untyped exports
     import("@cashfreepayments/cashfree-js")
-      .then(({ load }) =>
-        load({ mode: publicConfig.cashfree.mode }),
-      )
+      .then(({ load }) => load({ mode: publicConfig.cashfree.mode }))
       .then((instance: CashfreeInstance | null) => {
         if (instance) {
           setCashfree(instance);

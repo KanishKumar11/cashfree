@@ -13,7 +13,9 @@ export default function PaymentFailedPage() {
   const { data: payments } = usePayments(orderId);
 
   const payment = payments?.[0];
-  const errorReason = payment?.error_details?.error_description ?? "Your payment could not be processed.";
+  const errorReason =
+    payment?.error_details?.error_description ??
+    "Your payment could not be processed.";
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-gray-50 px-4">
@@ -48,7 +50,9 @@ export default function PaymentFailedPage() {
             </div>
             <div className="flex items-center justify-between">
               <span className="text-xs text-gray-500">Order ID</span>
-              <span className="font-mono text-xs text-gray-800">{order.order_id}</span>
+              <span className="font-mono text-xs text-gray-800">
+                {order.order_id}
+              </span>
             </div>
           </div>
         )}

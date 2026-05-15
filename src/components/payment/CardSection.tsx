@@ -29,7 +29,8 @@ export function CardSection() {
   const { startPolling } = usePaymentPolling({
     onSuccess: (id) => router.push(`/payment/success?order_id=${id}`),
     onFailed: (id) => router.push(`/payment/failed?order_id=${id}`),
-    onTimeout: () => router.push(`/payment/pending?order_id=${order?.order_id}`),
+    onTimeout: () =>
+      router.push(`/payment/pending?order_id=${order?.order_id}`),
   });
 
   // Mount Cashfree secure card elements
@@ -176,9 +177,7 @@ export function CardSection() {
           />
         </div>
         <div className="space-y-1">
-          <label className="block text-xs font-medium text-gray-600">
-            CVV
-          </label>
+          <label className="block text-xs font-medium text-gray-600">CVV</label>
           <div
             id="cf-card-cvv"
             className="rounded-lg border border-gray-200 px-3 py-2.5 text-sm"

@@ -66,10 +66,7 @@ function cloneForDebug(value: unknown, seen = new WeakSet<object>()): unknown {
 
 export function debugJSON(val: unknown): string {
   try {
-    return (
-      JSON.stringify(cloneForDebug(val), null, 2) ??
-      String(val)
-    );
+    return JSON.stringify(cloneForDebug(val), null, 2) ?? String(val);
   } catch {
     return String(val);
   }

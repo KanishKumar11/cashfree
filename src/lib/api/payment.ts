@@ -29,8 +29,10 @@ apiClient.interceptors.response.use(
 
 // ─── Payment API helpers ──────────────────────────────────────────────────────
 
-export interface CreateOrderPayload
-  extends Omit<CreateOrderRequest, "customer_details"> {
+export interface CreateOrderPayload extends Omit<
+  CreateOrderRequest,
+  "customer_details"
+> {
   customer_id: string;
   customer_name: string;
   customer_email: string;
@@ -63,9 +65,7 @@ export async function fetchOrderStatus(
   return data.data;
 }
 
-export async function fetchPayments(
-  orderId: string,
-): Promise<PaymentEntity[]> {
+export async function fetchPayments(orderId: string): Promise<PaymentEntity[]> {
   const { data } = await apiClient.get<ApiResponse<PaymentEntity[]>>(
     `/payment/payments/${orderId}`,
   );

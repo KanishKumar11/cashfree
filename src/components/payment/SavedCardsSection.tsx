@@ -22,7 +22,8 @@ export function SavedCardsSection({ cards }: SavedCardsProps) {
   const { startPolling } = usePaymentPolling({
     onSuccess: (id) => router.push(`/payment/success?order_id=${id}`),
     onFailed: (id) => router.push(`/payment/failed?order_id=${id}`),
-    onTimeout: () => router.push(`/payment/pending?order_id=${order?.order_id}`),
+    onTimeout: () =>
+      router.push(`/payment/pending?order_id=${order?.order_id}`),
   });
 
   async function handleSavedCardPay(e: React.FormEvent) {

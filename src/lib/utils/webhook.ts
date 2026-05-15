@@ -16,7 +16,9 @@ export function verifyWebhookSignature(
   secret: string,
 ): boolean {
   if (!secret) {
-    console.warn("[webhook] CASHFREE_WEBHOOK_SECRET not set — skipping verification");
+    console.warn(
+      "[webhook] CASHFREE_WEBHOOK_SECRET not set — skipping verification",
+    );
     return false;
   }
 

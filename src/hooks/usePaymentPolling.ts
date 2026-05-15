@@ -48,7 +48,9 @@ export function usePaymentPolling(options?: UsePaymentPollingOptions) {
     // Hard timeout
     timeoutRef.current = setTimeout(() => {
       stopPolling();
-      setError("Payment verification timed out. Please check your payment status.");
+      setError(
+        "Payment verification timed out. Please check your payment status.",
+      );
       options?.onTimeout?.();
     }, POLL_TIMEOUT_MS);
 
@@ -72,7 +74,10 @@ export function usePaymentPolling(options?: UsePaymentPollingOptions) {
           stopPolling();
           setPaymentStatus(status);
           setPaymentDetails(latest);
-          setError(debugJSON(latest.error_details) ?? "Payment failed. Please try again.");
+          setError(
+            debugJSON(latest.error_details) ??
+              "Payment failed. Please try again.",
+          );
           options?.onFailed?.(order.order_id);
         }
         // PENDING: keep polling
@@ -81,7 +86,16 @@ export function usePaymentPolling(options?: UsePaymentPollingOptions) {
         // Don't stop polling on transient network errors
       }
     }, POLL_INTERVAL_MS);
-  }, [order, isPolling, setPolling, setPaymentStatus, setPaymentDetails, setError, stopPolling, options]);
+  }, [
+    order,
+    isPolling,
+    setPolling,
+    setPaymentStatus,
+    setPaymentDetails,
+    setError,
+    stopPolling,
+    options,
+  ]);
 
   // Cleanup on unmount
   useEffect(() => {

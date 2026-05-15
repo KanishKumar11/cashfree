@@ -20,17 +20,17 @@ Production-grade Cashfree Payments integration for Next.js 16 with a fully custo
 
 ## Stack
 
-| Layer | Tech |
-|---|---|
-| Framework | Next.js 16 App Router |
-| Language | TypeScript 5 |
-| Styling | Tailwind CSS v4 |
-| State | Zustand |
-| Data fetching | TanStack React Query |
-| HTTP | Axios |
-| Animations | Framer Motion |
-| Validation | Zod v4 |
-| Payment SDK | Cashfree JS v3 + Element SDK |
+| Layer         | Tech                         |
+| ------------- | ---------------------------- |
+| Framework     | Next.js 16 App Router        |
+| Language      | TypeScript 5                 |
+| Styling       | Tailwind CSS v4              |
+| State         | Zustand                      |
+| Data fetching | TanStack React Query         |
+| HTTP          | Axios                        |
+| Animations    | Framer Motion                |
+| Validation    | Zod v4                       |
+| Payment SDK   | Cashfree JS v3 + Element SDK |
 
 ---
 
@@ -164,12 +164,12 @@ The handler verifies `x-webhook-signature` (HMAC-SHA256) and `x-webhook-timestam
 
 Use Cashfree [test cards and UPI IDs](https://docs.cashfree.com/docs/test-data):
 
-| Method | Test value |
-|---|---|
+| Method         | Test value                                    |
+| -------------- | --------------------------------------------- |
 | Card (success) | 4111 1111 1111 1111, CVV 123, any future date |
-| Card (failed) | 4111 1111 1111 1112 |
-| UPI (success) | success@upi |
-| UPI (failed) | failure@upi |
+| Card (failed)  | 4111 1111 1111 1112                           |
+| UPI (success)  | success@upi                                   |
+| UPI (failed)   | failure@upi                                   |
 
 ## Getting Started
 

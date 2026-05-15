@@ -27,11 +27,7 @@ export function PaymentMethodTabs() {
             className="relative flex flex-col items-center gap-0.5 px-4 py-3 text-xs font-medium whitespace-nowrap transition-colors"
           >
             <span className="text-base">{tab.icon}</span>
-            <span
-              className={
-                isActive ? "text-orange-500" : "text-gray-500"
-              }
-            >
+            <span className={isActive ? "text-orange-500" : "text-gray-500"}>
               {tab.label}
             </span>
             {isActive && (

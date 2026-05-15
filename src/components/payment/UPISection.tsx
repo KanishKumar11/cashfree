@@ -64,7 +64,8 @@ export function UPISection() {
   const { startPolling } = usePaymentPolling({
     onSuccess: (orderId) => router.push(`/payment/success?order_id=${orderId}`),
     onFailed: (orderId) => router.push(`/payment/failed?order_id=${orderId}`),
-    onTimeout: () => router.push(`/payment/pending?order_id=${order?.order_id}`),
+    onTimeout: () =>
+      router.push(`/payment/pending?order_id=${order?.order_id}`),
   });
 
   // Pre-mount only upiCollect — it needs to be visible for the user to type.
@@ -76,9 +77,7 @@ export function UPISection() {
     const collectEl = cashfree.create("upiCollect", {
       values: { placeholder: "yourname@upi" },
     });
-    collectEl.on("change", (e) =>
-      setCollectReady(!!(e.complete) && !e.error),
-    );
+    collectEl.on("change", (e) => setCollectReady(!!e.complete && !e.error));
     collectEl.mount("#upi-collect-frame");
     upiCollectEl.current = collectEl;
 
@@ -119,10 +118,10 @@ export function UPISection() {
           typeof e?.message?.message === "string"
             ? e.message.message
             : typeof e?.message === "string"
-            ? e.message
-            : typeof e?.error?.message === "string"
-            ? e.error.message
-            : undefined;
+              ? e.message
+              : typeof e?.error?.message === "string"
+                ? e.error.message
+                : undefined;
 
         const isMobileOnly =
           typeof rawString === "string" &&
@@ -132,7 +131,9 @@ export function UPISection() {
         const resolvedMessage = rawString || debugJSON(e);
         reject(
           new Error(
-            isMobileOnly ? "UPI App payments only work on mobile devices." : resolvedMessage || fallback,
+            isMobileOnly
+              ? "UPI App payments only work on mobile devices."
+              : resolvedMessage || fallback,
           ),
         );
       });
@@ -152,7 +153,9 @@ export function UPISection() {
 
     const mountNode = document.getElementById("upi-app-hidden");
     if (!mountNode) {
-      setError("Unable to initialize UPI app payment. Please refresh and try again.");
+      setError(
+        "Unable to initialize UPI app payment. Please refresh and try again.",
+      );
       setLoading(false);
       return;
     }
@@ -246,7 +249,9 @@ export function UPISection() {
       startPolling();
     } catch (err: unknown) {
       const e = err as any;
-      setError(debugJSON(e?.error ?? err) ?? "Failed to initiate UPI collect request.");
+      setError(
+        debugJSON(e?.error ?? err) ?? "Failed to initiate UPI collect request.",
+      );
       setLoading(false);
     }
   }

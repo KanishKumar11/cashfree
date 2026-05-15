@@ -77,7 +77,8 @@ export function WalletsSection() {
   const { startPolling } = usePaymentPolling({
     onSuccess: (id) => router.push(`/payment/success?order_id=${id}`),
     onFailed: (id) => router.push(`/payment/failed?order_id=${id}`),
-    onTimeout: () => router.push(`/payment/pending?order_id=${order?.order_id}`),
+    onTimeout: () =>
+      router.push(`/payment/pending?order_id=${order?.order_id}`),
   });
 
   async function handleWalletPay(provider: string) {
@@ -92,7 +93,8 @@ export function WalletsSection() {
       // Wait for the wallet element iframe to load (max 12 s)
       await new Promise<void>((resolve, reject) => {
         const timer = setTimeout(
-          () => reject(new Error("Payment component timed out. Please try again.")),
+          () =>
+            reject(new Error("Payment component timed out. Please try again.")),
           12000,
         );
         el.on("ready", () => {

@@ -54,9 +54,7 @@ export default function PaymentPendingPage() {
         </div>
 
         {orderId && (
-          <p className="font-mono text-xs text-gray-400">
-            Order: {orderId}
-          </p>
+          <p className="font-mono text-xs text-gray-400">Order: {orderId}</p>
         )}
       </motion.div>
     </div>

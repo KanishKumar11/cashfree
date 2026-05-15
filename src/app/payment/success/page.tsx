@@ -33,7 +33,9 @@ export default function PaymentSuccessPage() {
         </motion.div>
 
         <div className="space-y-1">
-          <h1 className="text-xl font-bold text-gray-900">Payment Successful!</h1>
+          <h1 className="text-xl font-bold text-gray-900">
+            Payment Successful!
+          </h1>
           <p className="text-sm text-gray-500">
             Your payment has been confirmed.
           </p>
@@ -42,13 +44,24 @@ export default function PaymentSuccessPage() {
         {/* Details */}
         {order && (
           <div className="rounded-xl bg-gray-50 p-4 text-left space-y-2">
-            <DetailRow label="Amount Paid" value={`₹${order.order_amount.toLocaleString("en-IN")}`} />
+            <DetailRow
+              label="Amount Paid"
+              value={`₹${order.order_amount.toLocaleString("en-IN")}`}
+            />
             <DetailRow label="Order ID" value={order.order_id} mono />
             {payment && (
               <>
-                <DetailRow label="Payment ID" value={String(payment.cf_payment_id)} mono />
+                <DetailRow
+                  label="Payment ID"
+                  value={String(payment.cf_payment_id)}
+                  mono
+                />
                 {payment.bank_reference && (
-                  <DetailRow label="Bank Reference" value={payment.bank_reference} mono />
+                  <DetailRow
+                    label="Bank Reference"
+                    value={payment.bank_reference}
+                    mono
+                  />
                 )}
               </>
             )}
@@ -78,7 +91,9 @@ function DetailRow({
   return (
     <div className="flex items-center justify-between gap-2">
       <span className="text-xs text-gray-500 shrink-0">{label}</span>
-      <span className={`text-xs font-medium text-gray-800 truncate ${mono ? "font-mono" : ""}`}>
+      <span
+        className={`text-xs font-medium text-gray-800 truncate ${mono ? "font-mono" : ""}`}
+      >
         {value}
       </span>
     </div>
